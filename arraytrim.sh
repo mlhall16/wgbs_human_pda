@@ -33,16 +33,16 @@ mkdir /tmp/${USER}/${SLURM_ARRAY_JOB_ID}
 fi # if /tmp/username/jobid directory does not exist, creates it
 
 mkdir /tmp/${USER}/${SLURM_ARRAY_JOB_ID}/${SLURM_ARRAY_TASK_ID} # makes a directory for the array number
-scp ${mypath}/${name1} /tmp/${USER}/${SLURM_ARRAY_JOB_ID}/${SLURM_ARRAY_TASK_ID} # creates a symbolic link to the first fastq file
-scp ${mypath}/${name2} /tmp/${USER}/${SLURM_ARRAY_JOB_ID}/${SLURM_ARRAY_TASK_ID} # creates a symbolic link to the second fastq file
+scp ${mypath}/${name1} /tmp/${USER}/${SLURM_ARRAY_JOB_ID}/${SLURM_ARRAY_TASK_ID} # copies the first fastq file to temp directory
+scp ${mypath}/${name2} /tmp/${USER}/${SLURM_ARRAY_JOB_ID}/${SLURM_ARRAY_TASK_ID} # copies the second fastq file to the temp directory
 cd /tmp/${USER}/${SLURM_ARRAY_JOB_ID}/${SLURM_ARRAY_TASK_ID} # goes to the temporary directory
 
-module load trim_galore
-source activate cutadapt-3.4
-srun trim_galore -j 4 --paired $name1 $name2
+module load trim_galore # loads trim galore!
+source activate cutadapt-3.4 # allows cutadapt to run
+srun trim_galore -j 4 --paired $name1 $name2 # runs trim galore in paired mode on the fastq files using 16 cores
 
-rm /tmp/${USER}/${SLURM_ARRAY_JOB_ID}/${SLURM_ARRAY_TASK_ID}/${name1} # removes symbolic link to file 1
-rm /tmp/${USER}/${SLURM_ARRAY_JOB_ID}/${SLURM_ARRAY_TASK_ID}/${name2} # removes symbolic link to file 2
+rm /tmp/${USER}/${SLURM_ARRAY_JOB_ID}/${SLURM_ARRAY_TASK_ID}/${name1} # removes first fastq file from temp
+rm /tmp/${USER}/${SLURM_ARRAY_JOB_ID}/${SLURM_ARRAY_TASK_ID}/${name2} # removes second fastq file from temp
 
 cp -r /tmp/${USER}/${SLURM_ARRAY_JOB_ID}/${SLURM_ARRAY_TASK_ID}/. /share/hwanglab/wgbs_human_pda/trimmed_fastq # copies contents of temp directory to hwanglab
 rm -rf /tmp/${USER}/${SLURM_ARRAY_JOB_ID}/${SLURM_ARRAY_TASK_ID} # removes temp directory
