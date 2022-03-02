@@ -3,10 +3,10 @@
 
 ### Load in data
 
-Navigate to server folder `WGBS_humanPDA`
+Navigate to server folder `/share/hwanglab/wgbs_human_pda`
 
 ```
-rsync -aP 2nd\ Folder/ mlhall@barbera.genomecenter.ucdavis.edu:/share/hwanglab
+rsync -aP 2nd\ Folder/ mlhall@barbera.genomecenter.ucdavis.edu:/share/hwanglab/wgbs_human_pda/fastq
 ```
 
 *Make sure that the rsync version on Macs is updated (and not 12 years old)
