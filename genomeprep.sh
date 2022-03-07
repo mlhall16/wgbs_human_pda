@@ -11,6 +11,8 @@
 #SBATCH --mail-type=ALL # sends emails when job starts and is completed
 #SBATCH --mail-user=mlhhall@ucdavis.edu
 
+aklog
+
 mkdir /tmp/${USER}/GenomePrep
 cd /tmp/${USER}/GenomePrep
 

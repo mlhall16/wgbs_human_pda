@@ -2,7 +2,7 @@
 #SBATCH --job-name=Trim_%A_%a # Job name %A is the job number, %a is the array number
 #SBATCH --nodes=1 # should never be anything other than 1
 #SBATCH --ntasks=1 # number of cpus to use
-#SBATCH --cpus-per-task=16
+#SBATCH --cpus-per-task=9
 #SBATCH --time=12:00:00 # Format is hours:minutes:seconds
 #SBATCH --mem-per-cpu=4G # Memory pool for each core
 #SBATCH --partition=production # cluster partition
@@ -10,7 +10,7 @@
 #SBATCH --error=/share/hwanglab/wgbs_human_pda/outerr/"stderr_%A_%a.err" # File to which STDERR will be written
 #SBATCH --mail-type=ALL # sends emails when job starts and is completed
 #SBATCH --mail-user=mlhhall@ucdavis.edu
-#SBATCH --array 3-31 # tells slurm which numbers to use when running the job
+#SBATCH --array 21-32 # tells slurm which numbers to use when running the job
 
 aklog #allows slurm to access home directory (maybe doesn't work)
 
