@@ -3,7 +3,7 @@
 #SBATCH --nodes=1 # should never be anything other than 1
 #SBATCH --ntasks=1 # number of cpus to use
 #SBATCH --cpus-per-task=8
-#SBATCH --time=12:00:00 # Format is hours:minutes:seconds
+#SBATCH --time=08:00:00 # Format is hours:minutes:seconds
 #SBATCH --mem-per-cpu=4G # Memory pool for each core
 #SBATCH --partition=production # cluster partition
 #SBATCH --output=/share/hwanglab/wgbs_human_pda/"stdout_gp.out" # File to which STDOUT will be written, with job and array number
@@ -20,6 +20,6 @@ cd /tmp/${USER}/GenomePrep
 cp /share/hwanglab/wgbs_human_pda/hg38.fa.gz /tmp/${USER}/GenomePrep
 
 module load bismark
-bismark_genome_preparation hg38.fa.gz
+srun bismark_genome_preparation --verbose /tmp/${USER}/GenomePrep/ #make sure this is a path to the directory not the file
 
 cp -r /tmp/${USER}/GenomePrep/ /share/hwanglab/wgbs_human_pda

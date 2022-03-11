@@ -22,5 +22,10 @@ ls /share/hwanglab/wgbs_human_pda/fastq | grep ".*R2.*" > ~/pdo/trimfilelist2
 
 Trim files using the script arrayalign.sh
 *Change the array numbers to match the number of files
+Finished 3/11/22
 
+### Perform genome preparation
 
+*Only needs to be done once
+*hg38 genome is already done at `/share/hwanglab/genome/hg38bismark`
+*Use the script `genomeprep.sh`
