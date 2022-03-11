@@ -13,6 +13,7 @@
 
 aklog
 
+mkdir /tmp/${USER}
 mkdir /tmp/${USER}/GenomePrep
 cd /tmp/${USER}/GenomePrep
 
