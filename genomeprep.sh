@@ -3,7 +3,7 @@
 #SBATCH --nodes=1 # should never be anything other than 1
 #SBATCH --ntasks=1 # number of cpus to use
 #SBATCH --cpus-per-task=8
-#SBATCH --time=08:00:00 # Format is hours:minutes:seconds
+#SBATCH --time=03:00:00 # Format is hours:minutes:seconds
 #SBATCH --mem-per-cpu=4G # Memory pool for each core
 #SBATCH --partition=production # cluster partition
 #SBATCH --output=/share/hwanglab/wgbs_human_pda/"stdout_gp.out" # File to which STDOUT will be written, with job and array number

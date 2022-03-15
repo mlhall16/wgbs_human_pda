@@ -28,4 +28,5 @@ Finished 3/11/22
 
 *Only needs to be done once
 *hg38 genome is already done at `/share/hwanglab/genome/hg38bismark`
-*Use the script `genomeprep.sh`
+*Use the script `genomeprep.sh` (theoretically this works, but I ran it locally, so I'm not sure)
+
