@@ -3,14 +3,14 @@
 #SBATCH --nodes=1 # should never be anything other than 1
 #SBATCH --ntasks=1 # number of cpus to use
 #SBATCH --cpus-per-task=9
-#SBATCH --time=15:00:00 # Format is hours:minutes:seconds
+#SBATCH --time=30:00:00 # Format is hours:minutes:seconds
 #SBATCH --mem-per-cpu=3G # Memory pool for each core
 #SBATCH --partition=production # cluster partition
 #SBATCH --output=/share/hwanglab/wgbs_human_pda/outerr/"stdout_%A_%a.out" # File to which STDOUT will be written, with job and array number
 #SBATCH --error=/share/hwanglab/wgbs_human_pda/outerr/"stderr_%A_%a.err" # File to which STDERR will be written
 #SBATCH --mail-type=ALL # sends emails when job starts and is completed
 #SBATCH --mail-user=mlhhall@ucdavis.edu
-#SBATCH --array 1-31 # tells slurm which numbers to use when running the job
+#SBATCH --array 1-31%3 # tells slurm which numbers to use when running the job
 
 aklog #allows slurm to access home directory (maybe doesn't work)
 
