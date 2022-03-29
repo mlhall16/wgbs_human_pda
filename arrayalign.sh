@@ -10,7 +10,7 @@
 #SBATCH --error=/share/hwanglab/wgbs_human_pda/outerr/"stderr_%A_%a.err" # File to which STDERR will be written
 #SBATCH --mail-type=ALL # sends emails when job starts and is completed
 #SBATCH --mail-user=mlhhall@ucdavis.edu
-#SBATCH --array 1-3,13,15,18-31%5 # tells slurm which numbers to use when running the job, %5 tells how many jobs to run at once (5)
+#SBATCH --array 18-31%5 # tells slurm which numbers to use when running the job, %5 tells how many jobs to run at once (5)
 
 aklog #allows slurm to access home directory (maybe doesn't work)
 
