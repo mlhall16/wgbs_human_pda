@@ -59,7 +59,18 @@ Use script arrayextract.sh- outputs CpG report, splitting report, bedGraph file,
 	files 1 and 13 failed due to trimming issues (?), the rest had other issues
 47261637- trimming on indices 1 and 13, successful
 47271179- alignment for indices 1-3,13,15,18-31, successful for 1-3, 13, 15
-
+47288792- alignment for indices 18-31, successful for all
+47296187- methylation extraction troubleshooting, multiple issues
+47296189- methylation extraction troubleshooting, issue with file selection, incorrect path to file list
+47296191- methylation extraction troubleshooting, no file space on node, switched from dev to production
+47342154- methylation extraction troubleshooting, saving issue
+47359285- methylation extraction troubleshooting, fixed saving issue by outputting directly to share/hwanglab
+47367832- methylation extraction for indices 3-32, all successful
+47519596- qualimap troubleshooting, issue with file selection, incorrect path to file list
+47519598- qualimap troubleshooting, need to sort bam input
+47519600- qualimap troubleshooting, no space on node, switched to production node
+47519602- qualimap troubleshooting
+  
 ### Directory Structure
 
 /share/hwanglab/
@@ -67,8 +78,20 @@ Use script arrayextract.sh- outputs CpG report, splitting report, bedGraph file,
     |-- aligned_files
     |   |-- bam_files
     |   |   `-- alignedfile_bismark_bt2_pe.bam
-    |   |-- reports
-    |   |   `-- alignmentreport_bismark_bt2_PE_report.txt
+    |   `-- reports
+    |       `-- alignmentreport_bismark_bt2_PE_report.txt
+    |-- bismark_reports
+    |	|-- bedgraph
+    |   |   `-- sample_val_1_bismark_bt2_pe.bedGraph.gz  
+    |   |-- context_files
+    |   |   `-- context_sample_val_1_bismark_bt2_pe.txt 
+    |   |-- coverage  
+    |   |   `-- sample_val_1_bismark_bt2_pe.bismark.cov.gz
+    |   |-- Mbias
+    |   |   `-- sample_val_1_bismark_bt2_pe.M-bias.txt
+    |   |-- report
+    |   |   |-- sample_val_1_bismark_bt2_pe.CpG_report.txt
+    |   |   `--	sample_val_1_bismark_bt2_pe_splitting_report.txt	
     |-- fastq
     |   |-- fastqfile_R1_001.fastq.gz
     |   `-- fastqfile_R2_001.fastq.gz
