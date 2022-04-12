@@ -2,15 +2,15 @@
 #SBATCH --job-name=Qualimap_%A_%a # Job name %A is the job number, %a is the array number
 #SBATCH --nodes=1 # should never be anything other than 1
 #SBATCH --ntasks=1 # number of cpus to use
-#SBATCH --cpus-per-task=8
-#SBATCH --time=06:00:00 # Format is hours:minutes:seconds
+#SBATCH --cpus-per-task=16
+#SBATCH --time=12:00:00 # Format is hours:minutes:seconds
 #SBATCH --mem-per-cpu=3G # Memory pool for each core
 #SBATCH --partition=production # cluster partition
 #SBATCH --output=/share/hwanglab/wgbs_human_pda/outerr/"stdout_%A_%a.out" # File to which STDOUT will be written, with job and array number
 #SBATCH --error=/share/hwanglab/wgbs_human_pda/outerr/"stderr_%A_%a.err" # File to which STDERR will be written
 #SBATCH --mail-type=ALL # sends emails when job starts and is completed
 #SBATCH --mail-user=mlhhall@ucdavis.edu
-#SBATCH --array 1-2 # tells slurm which numbers to use when running the job
+#SBATCH --array 3,4,5,6,7,10,13,14,15,16,18,19,21,22,23,26,27,28,29,30,31%5 # tells slurm which numbers to use when running the job
 
 aklog #allows slurm to access home directory (maybe doesn't work)
 
@@ -38,7 +38,7 @@ cd /tmp/${USER}/${SLURM_ARRAY_JOB_ID}/${SLURM_ARRAY_TASK_ID} # goes to the tempo
 module load qualimap
 module load samtools
 srun samtools sort ${name} -o ${name}_sorted
-srun qualimap bamqc -bam ${name}_sorted
+srun qualimap bamqc -bam ${name}_sorted --java-mem-size=3G -nt 12 
 
 rm /tmp/${USER}/${SLURM_ARRAY_JOB_ID}/${SLURM_ARRAY_TASK_ID}/${name} # removes first fastq file from temp
 
